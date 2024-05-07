@@ -34,7 +34,7 @@ const LoginScreen = () => {
       .then(data => {
         if (data.accessToken) {
           Alert.alert('Success', 'Login successful');
-          navigation.navigate('Tab'); // Assume navigating to Tab after login
+          navigation.navigate('Tab');
         } else {
           Alert.alert('Error', data.message || 'Login failed');
         }
@@ -51,7 +51,7 @@ const LoginScreen = () => {
       <TextInput
         style={styles.input}
         placeholder="Email"
-        placeholderTextColor="#BDBDBD" // Light gray for placeholder
+        placeholderTextColor="#BDBDBD"
         value={email}
         onChangeText={setEmail}
         autoCapitalize="none"
@@ -60,7 +60,7 @@ const LoginScreen = () => {
       <TextInput
         style={styles.input}
         placeholder="Password"
-        placeholderTextColor="#BDBDBD" // Light gray for placeholder
+        placeholderTextColor="#BDBDBD"
         secureTextEntry
         value={password}
         onChangeText={setPassword}
@@ -103,15 +103,15 @@ const styles = StyleSheet.create({
   },
   button: {
     marginVertical: 10,
-    backgroundColor: '#6D4C41', // Adjusted to a softer brown
+    backgroundColor: '#6D4C41',
     padding: 12,
-    borderRadius: 5, // Rounded corners for a better look
-    alignItems: 'center', // Center text horizontally
-    justifyContent: 'center', // Center text vertically
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
   },
   buttonText: {
     color: '#FFFFFF',
-    fontSize: 16, // Make the text slightly larger
+    fontSize: 16,
   },
 });
 

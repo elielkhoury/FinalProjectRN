@@ -1,5 +1,12 @@
 import React, {useState} from 'react';
-import {View, TextInput, Button, Text, StyleSheet, Alert} from 'react-native';
+import {
+  View,
+  TextInput,
+  Text,
+  StyleSheet,
+  Alert,
+  TouchableOpacity,
+} from 'react-native';
 import {useNavigation} from '@react-navigation/native';
 import {NativeStackNavigationProp} from '@react-navigation/native-stack';
 import {RootStackParamList} from '/Users/elieelkhoury/Desktop/Eurisko/FinalProject/App';
@@ -34,7 +41,7 @@ const SignupScreen = () => {
       .then(data => {
         if (data.accessToken) {
           Alert.alert('Success', 'Signup successful');
-          navigation.navigate('Tab'); // Assume navigating to the main tab
+          navigation.navigate('Tab');
         } else {
           Alert.alert('Error', data.message || 'Signup failed');
         }
@@ -51,6 +58,7 @@ const SignupScreen = () => {
       <TextInput
         style={styles.input}
         placeholder="Email"
+        placeholderTextColor="#BDBDBD"
         value={email}
         onChangeText={setEmail}
         autoCapitalize="none"
@@ -59,6 +67,7 @@ const SignupScreen = () => {
       <TextInput
         style={styles.input}
         placeholder="Password"
+        placeholderTextColor="#BDBDBD"
         secureTextEntry
         value={password}
         onChangeText={setPassword}
@@ -66,15 +75,20 @@ const SignupScreen = () => {
       <TextInput
         style={styles.input}
         placeholder="Confirm Password"
+        placeholderTextColor="#BDBDBD"
         secureTextEntry
         value={confirmPassword}
         onChangeText={setConfirmPassword}
       />
-      <Button title="Sign Up" onPress={handleSignup} />
-      <Button
-        title="Already have an account? Login"
-        onPress={() => navigation.navigate('Login')}
-      />
+      <TouchableOpacity style={styles.button} onPress={handleSignup}>
+        <Text style={styles.buttonText}>SIGN UP</Text>
+      </TouchableOpacity>
+      <View style={{height: 10}} />
+      <TouchableOpacity
+        style={styles.button}
+        onPress={() => navigation.navigate('Login')}>
+        <Text style={styles.buttonText}>ALREADY HAVE AN ACCOUNT? LOGIN</Text>
+      </TouchableOpacity>
     </View>
   );
 };
@@ -84,33 +98,35 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: 'center',
     padding: 20,
-    backgroundColor: '#3E2723', // Coffee brown background
+    backgroundColor: '#3E2723',
   },
   title: {
     fontSize: 24,
     fontWeight: 'bold',
     marginBottom: 30,
     textAlign: 'center',
-    color: '#FFFFFF', // White text for contrast
+    color: '#FFFFFF',
   },
   input: {
     height: 50,
-    borderColor: '#FFFFFF', // White borders
+    borderColor: '#FFFFFF',
     borderWidth: 1,
     marginBottom: 15,
     paddingHorizontal: 10,
-    color: '#FFFFFF', // White text input
-    backgroundColor: '#4E342E', // Slightly lighter brown for input background
+    color: '#FFFFFF',
+    backgroundColor: '#4E342E',
   },
   button: {
-    marginVertical: 10, // Spacing between buttons
-    color: '#FFFFFF', // Text color for the button
-    backgroundColor: '#795548', // Coffee themed button color
-    padding: 10,
+    backgroundColor: '#6D4C41',
+    padding: 12,
+    borderRadius: 5,
+    alignItems: 'center',
+    justifyContent: 'center',
+    marginVertical: 10,
   },
   buttonText: {
-    color: '#FFFFFF', // White button text for readability
-    textAlign: 'center',
+    color: '#FFFFFF',
+    fontSize: 16,
   },
 });
 
